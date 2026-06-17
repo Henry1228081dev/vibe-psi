@@ -30,6 +30,52 @@ PSI auto-resumes from wherever you left off by scanning for existing docs in you
 
 
 
+## Installation & Setup
+
+You can install PSI either **globally** (for use across any workspace) or **locally** (per specific project).
+
+### Option 1: Global Installation (Recommended)
+This makes PSI available globally in all workspaces for your agent.
+
+1. **Clone the repository** to your agent's config directory (e.g. `~/.gemini/config/skills/vibe-psi` or `~/.claude/skills/vibe-psi`):
+   ```bash
+   # Clone to your global agent config
+   git clone https://github.com/Henry1228081dev/vibe-psi.git "C:\Users\<YourUsername>\.gemini\config\skills\vibe-psi"
+   ```
+2. **Update routing paths** in `SKILL.md`:
+   Open `SKILL.md` in your cloned location and locate the routing section (around line 89):
+   ```markdown
+   > **Read path format:** `C:\Users\<YourUsername>\.gemini\config\skills\vibe-psi\phases\[filename]`
+   ```
+   Modify it to match the absolute path to your cloned `phases/` directory.
+
+---
+
+### Option 2: Local Project Installation
+If you want to bundle PSI inside a specific repository/project.
+
+1. **Clone the repository** into your project's `.agents/skills/` directory:
+   ```bash
+   git clone https://github.com/Henry1228081dev/vibe-psi.git .agents/skills/vibe-psi
+   ```
+2. **Update routing paths** in `SKILL.md`:
+   Open `.agents/skills/vibe-psi/SKILL.md` and modify the read path format to point to your project's absolute path:
+   ```markdown
+   > **Read path format:** `C:\absolute\path\to\your-project\.agents\skills\vibe-psi\phases\[filename]`
+   ```
+   *(Note: Absolute paths ensure the agent can reliably locate and read the phase files regardless of the workspace root or directory structure.)*
+
+---
+
+### Option 3: Zero-Install / Manual Paste
+If you want to use PSI as a one-off run without installing files locally:
+1. Copy the full content of `SKILL.md` and paste it directly into your agent's chat context.
+2. Introduce your project idea to trigger Step 0.
+3. When the agent requests to read a phase file (e.g., `phases/p1-discovery.md`), copy/paste that file's content from the GitHub repository into the chat.
+
+---
+
+
 ## The 5 Phases
 
 | # | Phase | What Happens | Output File |
