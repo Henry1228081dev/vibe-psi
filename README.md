@@ -1,9 +1,9 @@
-# PSI — Find a Problem Worth Solving. Build a Solution Worth Using.
+# PSI: Finding a Problem Worth Solving to Build a Solution Worth Using.
 
 > **This is not a PRD generator.** It's a co-founder skill.
 > The PRD, prototypes, and engineering spec are outputs of the process — not the goal.
 
----
+
 
 ## What PSI Does
 
@@ -13,7 +13,7 @@ PSI walks you through 5 gated phases to validate that your idea is worth buildin
 
 **Style:** Sharp co-founder. Direct, research-backed, honest. Not a yes-machine. If the evidence shows the idea is weak, PSI says so and proposes a sharper angle.
 
----
+
 
 ## How to Trigger
 
@@ -28,7 +28,7 @@ Say any of:
 
 PSI auto-resumes from wherever you left off by scanning for existing docs in your project.
 
----
+
 
 ## The 5 Phases
 
@@ -42,7 +42,7 @@ PSI auto-resumes from wherever you left off by scanning for existing docs in you
 
 Each phase is gated — you must explicitly approve before the next begins.
 
----
+
 
 ## Skill Folder Structure
 
@@ -75,7 +75,7 @@ vibe-psi/
 
 **How it loads:** `SKILL.md` is ~180 lines and always in context. Phase files (~200–300 lines each) are loaded on demand via `Read` tool call — only the active phase is in context at any time. This prevents context rot from 1,000+ lines of instructions competing for attention.
 
----
+
 
 ## Project Output Folder Structure
 
@@ -110,7 +110,6 @@ your-project/
         └── 04-mvp-option-c.html       ← MVP option: secondary feature set C
 ```
 
----
 
 ## Key Behaviours
 
@@ -126,7 +125,7 @@ your-project/
 | **SMART metrics enforced** | Every success metric is validated against all 5 SMART criteria before locking |
 | **Fact-check + alignment-check at every gate** | Background pass before each phase closes |
 
----
+
 
 ## Related Skills
 
