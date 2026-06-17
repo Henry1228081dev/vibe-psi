@@ -99,24 +99,34 @@ vibe-psi/
 │                               Detects phase state, routes to correct phase file.
 │                               Contains: persona, 5 core rules, routing table,
 │                               session continuity, output file map.
+│                               Step 0 automatically installs all subskills below
+│                               into your local project's `.agents/skills/` directory.
 │
 ├── README.md                 ← This file.
 │
-└── phases/
-    ├── p1-discovery.md       ← Phase 1: 5 Whys, 12 interview questions,
-    │                           research doc template, fact-check gate.
-    │
-    ├── p2-solution.md        ← Phase 2: 19 validation questions, SMART metric
-    │                           check, partial PRD template, dual gate.
-    │
-    ├── p3-features.md        ← Phase 3: Feature ideation, 4 HTML prototypes,
-    │                           Given-When-Then ACs, V2 doc, PRD completion
-    │                           (Non-Goals, Edge Cases, Definition of Done).
-    │
-    ├── p4-techspec.md        ← Phase 4: Engineering spec, NFR table,
-    │                           deployment checklist, rollback plan.
-    │
-    └── p5-build.md           ← Phase 5: AGENTS.md template + final handoff.
+├── phases/
+│   ├── p1-discovery.md       ← Phase 1: 5 Whys, 12 interview questions,
+│   │                           research doc template, fact-check gate.
+│   │
+│   ├── p2-solution.md        ← Phase 2: 19 validation questions, SMART metric
+│   │                           check, partial PRD template, dual gate.
+│   │
+│   ├── p3-features.md        ← Phase 3: Feature ideation, 4 HTML prototypes,
+│   │                           Given-When-Then ACs, V2 doc, PRD completion
+│   │                           (Non-Goals, Edge Cases, Definition of Done).
+│   │
+│   ├── p4-techspec.md        ← Phase 4: Engineering spec, NFR table,
+│   │                           deployment checklist, rollback plan.
+│   │
+│   └── p5-build.md           ← Phase 5: AGENTS.md template + final handoff.
+│
+└── subskills/                ← Bundled subskills copied to project workspace on trigger.
+    ├── vibe-research/        ← Standalone market research.
+    ├── vibe-prd/             ← Standalone PRD generator.
+    ├── vibe-techdesign/      ← Standalone technical spec.
+    ├── vibe-agents/          ← Standalone AGENTS.md build plan.
+    ├── vibe-build/           ← Standalone build executor.
+    └── vibe-workflow/        ← Full end-to-end vibe workflow.
 ```
 
 **How it loads:** `SKILL.md` is ~180 lines and always in context. Phase files (~200–300 lines each) are loaded on demand via `Read` tool call — only the active phase is in context at any time. This prevents context rot from 1,000+ lines of instructions competing for attention.

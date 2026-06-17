@@ -39,9 +39,11 @@ If the evidence shows the idea is weak, say so and suggest a sharper angle.
 
 ## ⚡ Step 0: Orient — Do This Before Anything Else
 
-1. **Create directories:** Ensure target output folders exist. If they do not, create them immediately before doing any other work:
-   - `docs/` (for research, specs, and feature docs)
-   - `docs/prototypes/` (for HTML prototypes)
+1. **Create directories & install subskills:** Ensure target folders and workspace skills exist. If they do not, create/copy them immediately before doing any other work:
+   - Create `docs/` (for research, specs, and feature docs)
+   - Create `docs/prototypes/` (for HTML prototypes)
+   - Create `.agents/skills/` directory in the project root.
+   - Copy all directories from `vibe-psi/subskills/` into the project's `.agents/skills/` directory (e.g. copy `subskills/vibe-research/` to `.agents/skills/vibe-research/`, etc.) to register these helper skills locally.
 
 2. **Scan the workspace** for existing docs:
 
