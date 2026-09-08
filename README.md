@@ -1,203 +1,106 @@
-# PSI: Finding a Problem Worth Solving to Build a Solution Worth Using.
+# PSI: Find a problem worth solving. Test a solution worth using.
 
-> **This is not a PRD generator.** It's a co-founder skill.
-> The PRD, prototypes, and engineering spec are outputs of the process — not the goal.
+**A co-founder skill, not a PRD generator.** PSI helps a user understand a problem,
+compare explanations and mechanisms, and make the smallest justified investment.
+It supports personal problems, commercial opportunity discovery, internal work,
+learning and public-interest goals. Research can reduce uncertainty; it cannot
+guarantee demand, safety, commercial success or product-market fit.
 
+## Use it
 
+Explicitly select `vibe-psi` and say “help me understand this problem”, “is this
+worth building?”, or “help me find a problem in this audience”. A proposed app is
+recorded as a hypothesis, not permission to jump to features. Independent
+questions can be batched; unknown answers trigger investigation rather than guesses.
 
-## What PSI Does
+Install a reviewed checkout in your host's skill directory, with the folder name
+`vibe-psi`. For a local development checkout, using GitHub CLI:
 
-PSI walks you through 5 gated phases to validate that your idea is worth building before a single line of code is written. It kills bad ideas early and turns good ones into a fully engineered, ready-to-build spec.
-
-**Mission:** Stop founders from wasting months building things nobody wants.
-
-**Style:** Sharp co-founder. Direct, research-backed, honest. Not a yes-machine. If the evidence shows the idea is weak, PSI says so and proposes a sharper angle.
-
-
-
-## How to Trigger
-
-Say any of:
-- *"help me build [idea]"*
-- *"is this worth building?"*
-- *"validate my idea"*
-- *"write a PRD"*
-- *"new SaaS / MVP / project"*
-- *"start coding"*
-- *"vibe / psi guide / product guide"*
-
-PSI auto-resumes from wherever you left off by scanning for existing docs in your project.
-
-
-
-## Installation & Setup
-
-You can install PSI either **globally** (for use across any workspace) or **locally** (per specific project).
-
-### Option 1: Global Installation (Recommended)
-This makes PSI available globally in all workspaces for your agent.
-
-1. **Clone the repository** to your agent's config directory (e.g. `~/.gemini/config/skills/vibe-psi` or `~/.claude/skills/vibe-psi`):
-   ```bash
-   # Clone to your global agent config
-   git clone https://github.com/Henry1228081dev/vibe-psi.git "C:\Users\<YourUsername>\.gemini\config\skills\vibe-psi"
-   ```
-2. **Update routing paths** in `SKILL.md`:
-   Open `SKILL.md` in your cloned location and locate the routing section (around line 89):
-   ```markdown
-   > **Read path format:** `C:\Users\<YourUsername>\.gemini\config\skills\vibe-psi\phases\[filename]`
-   ```
-   Modify it to match the absolute path to your cloned `phases/` directory.
-
----
-
-### Option 2: Local Project Installation
-If you want to bundle PSI inside a specific repository/project.
-
-1. **Clone the repository** into your project's `.agents/skills/` directory:
-   ```bash
-   git clone https://github.com/Henry1228081dev/vibe-psi.git .agents/skills/vibe-psi
-   ```
-2. **Update routing paths** in `SKILL.md`:
-   Open `.agents/skills/vibe-psi/SKILL.md` and modify the read path format to point to your project's absolute path:
-   ```markdown
-   > **Read path format:** `C:\absolute\path\to\your-project\.agents\skills\vibe-psi\phases\[filename]`
-   ```
-   *(Note: Absolute paths ensure the agent can reliably locate and read the phase files regardless of the workspace root or directory structure.)*
-
----
-
-### Option 3: Zero-Install / Manual Paste
-If you want to use PSI as a one-off run without installing files locally:
-1. Copy the full content of `SKILL.md` and paste it directly into your agent's chat context.
-2. Introduce your project idea to trigger Step 0.
-3. When the agent requests to read a phase file (e.g., `phases/p1-discovery.md`), copy/paste that file's content from the GitHub repository into the chat.
-
----
-
-
-## The 5 Phases
-
-| # | Phase | What Happens | Output File |
-|---|-------|-------------|-------------|
-| 1 | **Problem Discovery** | 5 Whys + 12 research questions. Proves the problem is real and worth solving. Can kill the idea here — that's a win. | `docs/research-[App].md` |
-| 2 | **Solution Validation** | 19 questions. Validates the proposed solution actually solves the Phase 1 root cause. Writes partial PRD. | `docs/PRD-[App]-MVP.md` (partial) |
-| 3 | **Feature Funnel** | Ideation → prototypes → Given-When-Then acceptance criteria → lock V1 → document V2. Completes the PRD. | `docs/PRD-[App]-MVP.md` (final) + `docs/V2-Features-[App].md` + `docs/prototypes/` |
-| 4 | **Engineering Spec** | Full tech design: schema, API endpoints, NFRs, deployment checklist, rollback plan, cost estimate. | `docs/TechDesign-[App]-MVP.md` |
-| 5 | **Build Plan** | AGENTS.md handoff to a coding agent. Phased tasks, acceptance criteria gates, V2 lockout rules. | `AGENTS.md` |
-
-Each phase is gated — you must explicitly approve before the next begins.
-
-
-
-## Skill Folder Structure
-
-```
-vibe-psi/
-│
-├── SKILL.md                  ← Orchestrator. Loaded by agent at trigger.
-│                               Detects phase state, routes to correct phase file.
-│                               Contains: persona, 5 core rules, routing table,
-│                               session continuity, output file map.
-│                               Step 0 automatically installs all subskills below
-│                               into your local project's `.agents/skills/` directory.
-│
-├── README.md                 ← This file.
-│
-├── phases/
-│   ├── p1-discovery.md       ← Phase 1: 5 Whys, 12 interview questions,
-│   │                           research doc template, fact-check gate.
-│   │
-│   ├── p2-solution.md        ← Phase 2: 19 validation questions, SMART metric
-│   │                           check, partial PRD template, dual gate.
-│   │
-│   ├── p3-features.md        ← Phase 3: Feature ideation, 4 HTML prototypes,
-│   │                           Given-When-Then ACs, V2 doc, PRD completion
-│   │                           (Non-Goals, Edge Cases, Definition of Done).
-│   │
-│   ├── p4-techspec.md        ← Phase 4: Engineering spec, NFR table,
-│   │                           deployment checklist, rollback plan.
-│   │
-│   └── p5-build.md           ← Phase 5: AGENTS.md template + final handoff.
-│
-└── subskills/                ← Bundled subskills copied to project workspace on trigger.
-    ├── vibe-research/        ← Standalone market research.
-    ├── vibe-prd/             ← Standalone PRD generator.
-    ├── vibe-techdesign/      ← Standalone technical spec.
-    ├── vibe-agents/          ← Standalone AGENTS.md build plan.
-    ├── vibe-build/           ← Standalone build executor.
-    └── vibe-workflow/        ← Full end-to-end vibe workflow.
+```sh
+gh repo clone Henry1228081dev/vibe-psi .agents/skills/vibe-psi
 ```
 
-**How it loads:** `SKILL.md` is ~180 lines and always in context. Phase files (~200–300 lines each) are loaded on demand via `Read` tool call — only the active phase is in context at any time. This prevents context rot from 1,000+ lines of instructions competing for attention.
+Review the commit you install; this command follows the default branch and is
+not an integrity-pinned release installer. No machine-specific path edits are
+needed. Phase files resolve relative to the loaded SKILL.md; output resolves
+relative to the **separately selected product root**. Global installations use
+the same layout under the host's documented global skill path.
 
+Python 3.11+ enables the included offline preflight. File tools are required;
+external research needs search and page retrieval. An independent reviewer is
+optional with an explicitly labeled self-review fallback. Host capability and
+permission checks come first. Without execution support, PSI cannot claim
+machine-checked transitions. A paste-only invocation is advisory, not checked.
 
+## The learning loop
 
-## Project Output Folder Structure
+1. Orient safely; capture the user's purpose and recent experience.
+2. Research the problem, competing causes, workarounds and counterevidence.
+3. Confirm a solution-independent, evidence-calibrated problem statement.
+4. Compare mechanisms and choose a cheap falsification experiment.
+5. Define risk-matched prototype/scope, outcomes, guardrails and thresholds.
+6. Run an authorized non-build experiment or hand off to an external builder.
+7. Inspect actual observations; iterate, research more, pivot, stop or graduate.
 
-When PSI runs in your project, it automatically creates the required folder structure (e.g., ensuring `docs/` and `docs/prototypes/` exist) and writes these files:
+Technical design and PRDs are conditional outputs. HTML, payment tests and market
+sizing are not universal requirements. A low-cost experiment may test unproven
+demand; no fake “validated” label is required to justify it. High-stakes exposure
+still requires adequate safety/privacy review and action-specific authorization.
 
-```
-your-project/
-│
-├── AGENTS.md                          ← Phase 5 output. Handoff to coding agent.
-│
+## Workspace and checked state
+
+After product-root selection, initialization creates only:
+
+```text
+product-root/
 └── docs/
-    ├── research-[AppName].md          ← Phase 1 output. Problem validated.
-    │
-    ├── PRD-[AppName]-MVP.md           ← Phase 2–3 output. Full product spec.
-    │                                    Sections: Overview, Why Now, Problem,
-    │                                    Solution, Target User, User Journey,
-    │                                    Success Metrics (SMART), Assumptions,
-    │                                    Business Viability, Constraints, Risks,
-    │                                    MVP Feature Requirements (Given-When-Then),
-    │                                    Non-Goals, Edge Cases, Definition of Done.
-    │
-    ├── V2-Features-[AppName].md       ← Phase 3 output. Deferred features,
-    │                                    documented and locked out of V1.
-    │
-    ├── TechDesign-[AppName]-MVP.md    ← Phase 4 output. Stack, schema, endpoints,
-    │                                    NFRs, deployment checklist, cost estimate.
-    │
+    ├── psi-state.json
+    ├── reviews/
     └── prototypes/
-        ├── 01-feature-showcase.html   ← All ideated features as visual cards
-        ├── 02-mvp-option-a.html       ← MVP option: secondary feature set A
-        ├── 03-mvp-option-b.html       ← MVP option: secondary feature set B
-        └── 04-mvp-option-c.html       ← MVP option: secondary feature set C
 ```
 
+It does not copy helpers, initialize an app, create empty final documents, or
+overwrite AGENTS.md. Namespaced versioned JSON artifacts are written as each
+stage produces real content: brief, problem, solution, experiment, optional
+handoff/return, outcome and decision. Human-readable Markdown is optional output,
+not proof of state. See [the complete contract](references/state-contract.md).
 
-## Key Behaviours
+Using your host command tool, replace and quote both paths:
 
-| Behaviour | What It Means |
-|-----------|--------------|
-| **One question at a time** | Phase 1 & 2 run single-question interviews (AGENTS.md batch rule overridden) |
-| **Research before every question** | Agent fetches real sources, presents findings, discusses — then asks |
-| **Root cause = hypothesis** | 5 Whys output is always labeled as a hypothesis to validate, not a verified fact |
-| **Kill path exists** | Phase 1 verdict has two options: ✅ worth pursuing OR ❌ not worth building (with pivot suggestion) |
-| **PRD complete only after Phase 3** | Non-Goals, Edge Cases, DoD are intentionally written after features are locked |
-| **V2 is formally documented** | Every deferred feature goes into `docs/V2-Features-[App].md` — never just dropped |
-| **Given-When-Then ACs** | Every V1 feature has testable acceptance criteria, not vague bullets |
-| **SMART metrics enforced** | Every success metric is validated against all 5 SMART criteria before locking |
-| **Fact-check + alignment-check at every gate** | Background pass before each phase closes |
+```sh
+python3 <skill-root>/scripts/psi_state.py init --root <product-root>
+python3 <skill-root>/scripts/psi_state.py check --root <product-root>
+python3 <skill-root>/scripts/psi_state.py check --root <product-root> --next SOLUTION_DISCOVERY
+```
 
+`check` is read-only and returns a nonzero status on rejection. PSI records an
+approved transition afterward; the helper does not fabricate reviews/approvals.
+Fingerprints bind exact bytes and upstream dependencies. Legacy filenames never
+establish completion. Corrupt/moved manifests stop for explicit recovery.
 
+**Limits:** this is a procedural skill plus an offline checker, not a sandbox,
+authenticated approval service, or host-wide tool interceptor. It cannot force
+skill selection, validate the truth of cited evidence, or prevent a permissive
+agent from ignoring it. Use trusted single-writer workspaces; concurrent malicious
+filesystem mutation is out of scope. Linux is exercised locally; other operating
+systems require native validation before claiming support.
 
-## Related Skills
+## Development verification
 
-These sibling skills handle individual phases if you want to use them standalone:
+```sh
+python3 -m unittest discover -s tests -v
+```
 
-| Skill | What it does |
-|-------|-------------|
-| `vibe-research` | Standalone market research |
-| `vibe-prd` | Standalone PRD generation |
-| `vibe-techdesign` | Standalone technical design doc |
-| `vibe-agents` | Standalone AGENTS.md build plan |
-| `vibe-build` | Standalone build execution |
+Tests cover structural state/gate contracts and negative fixtures. Static prose
+checks do not prove model obedience, nor do synthetic fixtures prove product
+success. Live model replays should be reported separately with prompts, model,
+results and limitations. See [implementation and issue map](docs/implementation-plan.md).
 
-PSI orchestrates all of them in sequence, with validation gates between each.
+## Helpers and provenance
 
----
+PSI is the only discoverable orchestrator. Original imported helper contents are
+preserved as inactive Markdown under `references/vendor/`, not auto-installed
+SKILL.md files. Do not execute archived commands. Provenance/license review is a
+release blocker for redistributing those helpers; see [vendor status](references/vendor/README.md).
 
-*Made with love by taha.u*  
-*Credits to /vibe-prd creators and its skill set for heavily inspiring this workflow.*
+Made by taha.u. Credits to the /vibe-prd creators for the original inspiration.
