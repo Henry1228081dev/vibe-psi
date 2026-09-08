@@ -1,204 +1,94 @@
-# PSI Phase 1: Problem Discovery
+# PSI — Founder brief and problem discovery
 
-**Goal:** Prove the problem is real and worth solving before touching a solution.
-Run the 5 Whys root-cause analysis. Build an evidence-backed research document.
-If the problem doesn't hold up, say so and propose a pivot — this is the best outcome for a bad idea.
+Read the installed root SKILL.md and references/evidence-safety.md first.
+No solution, feature, architecture, or MVP recommendation is legal here.
 
-**Output file:** `docs/research-[AppName].md`
+## FOUNDER_BRIEF
 
----
+Capture purpose, affected person, recent incident, desired outcome, constraints,
+workaround, origin of belief, proposed solution, and unknowns. For opportunity
+discovery, investigate accessible audiences and repeated workflows; do not ask
+the user to invent pain. Capture money/time ceilings, skills, access and risk
+only to the extent relevant to their purpose. A no-code workspace is normal.
 
-## Research Protocol (Phase 1 Standard)
+Use independent question batches if requested. An experiential question needs
+no preliminary browsing. Do not prime the user's incident with a preferred
+causal explanation. Store the proposed mechanism separately. A provisional
+statement is a working hypothesis, not a market verdict.
 
-Before every question: search, fetch, and synthesize real evidence first. Minimum 3 sources opened and read via WebFetch per question turn. Minimum 10 sources across the full phase before writing the output document.
+Write `docs/brief-v1.json` using the common artifact envelope in the state
+contract. Review for accurate intent capture and get explicit approval before
+PROBLEM_DISCOVERY. If the user disagrees, revise rather than relabel agreement.
 
-**What to search:**
-- Reddit threads (subreddits where target users hang out)
-- G2, Capterra, Trustpilot, Product Hunt reviews and comments
-- IndieHackers, HackerNews "Ask HN" threads
-- Competitor pricing pages, feature lists, changelog
-- Industry reports (Statista, CB Insights, a16z, YC essays)
+## PROBLEM_DISCOVERY
 
-**Evidence Ledger (maintain throughout):**
+1. Define the decision and the critical unknowns. Build a revisable question
+   tree: who/when → observed difficulty → consequence → possible causes →
+   current response → why it persists → intervention points.
+2. Investigate external claims that could change the decision. Open actual
+   sources and triangulate independent evidence; seek praise of alternatives
+   as well as complaints. Use official sources for features/pricing, original
+   data for prevalence, user accounts for lived experience, and appropriate
+   research for causal mechanisms. Source counts are not stopping criteria.
+3. Compare at least two plausible causes for consequential causal conclusions;
+   if only one is plausible, justify that limit and seek counterevidence.
+   Record support, contradiction, prediction, **falsifier**, and cheapest
+   discriminating test for each. Five Whys is optional, not five required facts.
+4. Stop when the next decision is justified at its risk level or additional
+   accessible research cannot resolve the blocker. Record missing access,
+   uncertainty and next observation/recruitment steps. UNKNOWN is allowed;
+   consequential unknowns may still require RESEARCH_MORE, not a positive gate.
+5. Rewrite the canonical **solution-independent** statement from the accumulated
+   evidence. Do not preserve the first sentence merely because the user liked it.
 
-| Claim / Decision | Source URL | Source Type | What the Source Actually Says | Product Impact |
-|-----------------|-----------|-------------|------------------------------|---------------|
-| ... | ... | ... | ... | ... |
+## Canonical problem artifact
 
-**Back-and-Forth Protocol:** After each research finding, present it and discuss naturally before locking the answer. Do not immediately force the next question. Let the conversation land.
+`docs/problem-v1.json` contains `project_id`, `kind: problem`, `statement`,
+`evidence`, `hypotheses`, `verdict`, and the research synthesis. Register it with
+its approved brief dependency. Version new revisions; never overwrite history.
 
----
+Required `statement` dimensions (the CLI checks completeness/provenance):
+- `user`: specific enough to recruit or the identified personal user.
+- `situation`: actual trigger/context.
+- `desired_progress`: what they want to accomplish.
+- `difficulty`: observable behavior or failure, not a missing technology.
+- `workaround`: present response, including doing nothing.
+- `frequency` and `severity`: sourced, or explicitly UNKNOWN; no invented rates.
+- `consequence`: meaningful cost, risk, wellbeing, time or other purpose outcome.
+- `counterevidence`: disagreement and strongest alternative interpretation.
+- `falsifier`: what would change or reject this framing.
 
-## Interview Rules
+Each dimension is an object with `text`, `status` (SUPPORTED, ASSUMPTION,
+UNKNOWN, CONFLICTING), and `evidence_ids`. Supported/conflicting clauses need
+resolvable evidence IDs. The state contract specifies the evidence records.
 
-- **One question at a time.** Wait for the user's response before moving on. (SKILL OVERRIDE active.)
-- Research before every question — never ask in a vacuum.
-- Present research findings first as distinct options with your recommendation and rationale.
-- If the user gives a surface-level answer, probe deeper with the next Why.
-- Do not infer answers and write the doc. Every required answer must come from the user or be explicitly proposed by you and accepted.
+Natural rendering: “When [user] is in [situation] trying to [progress], they
+experience [difficulty], respond with [workaround], and suffer [consequence].
+Evidence supports [limited inference]; [uncertainty] remains.” Do not force
+awkward prose. Keep root causes and the proposed solution outside this statement.
 
----
+## Teaching checkpoint and review
 
-## Questions — Ask in Order, One at a Time
+Return a concise briefing:
+- What I found.
+- Why it matters.
+- **What it does not prove**.
+- Alternative explanation.
+- **What changed** in the problem map.
+- Next question/test, only if it changes the next decision.
 
-**Q1 — The Core Problem**
-> Search Reddit, Product Hunt, G2, Capterra, and IndieHackers for complaints in this idea space.
-> Fetch and read at least 3 actual pages — do not rely on search snippets.
-> Present real user quotes and frustrations with fetched source links. Discuss.
-> Then ask: *"In one sentence — what is the core problem this solves?"*
+A semantic critic checks specific user/context, solution contamination, clause
+support, sampling, falsifiability, founder bias, conflicts and the investment
+recommendation. The CLI cannot determine these from prose. Present the revised
+statement for intent confirmation separately from its evidence verdict.
 
-**Q2 — 1st Why**
-> *"Why does this problem occur?"*
+Legal verdicts:
+- WORTH_INVESTIGATING: enough to compare mechanisms, not proof of demand.
+- RESEARCH_MORE: stay here and name the next informative action.
+- PIVOT: return to FOUNDER_BRIEF with changed framing/segment.
+- STOP: stop the cycle.
 
-**Q3 — 2nd Why**
-> *"Why is that?"*
-> (If the user reaches a compelling root cause early, skip ahead to Q6.)
-
-**Q4 — 3rd Why**
-> *"Why?"*
-
-**Q5 — 4th Why**
-> *"Why?"*
-
-**Q6 — 5th Why — Root Cause Hypothesis**
-> *"What do you believe is the ultimate root cause? We'll label this as a hypothesis — something
-> to validate before building, not a verified fact."*
-
-**Q7 — Target Audience**
-> Search forums, job boards, and communities to find who is actively complaining about this problem.
-> What job titles, demographics, or communities appear most? Fetch and read actual community pages.
-> Present findings with fetched links. Discuss. Then ask:
-> *"Who specifically has this problem? Not 'developers' — be precise: 'bootstrapped SaaS founders
-> under $5k MRR on Stripe' or 'operations managers at logistics companies under 200 employees'."*
-
-**Q8 — Existing Solutions**
-> Required: Fetch actual competitor pages — pricing, features, changelogs, G2/Capterra review pages.
-> For each competitor found, research and present:
-> - Market position (who uses it, at what scale)
-> - Pricing (real numbers from fetched pricing page)
-> - Technical approach (public docs, GitHub, architecture posts)
-> - User complaints (real quotes from fetched review pages)
-> - Similar startups in this space with outcomes (funding, MRR, exits)
->
-> Show the breakdown. Discuss. Then ask:
-> *"Which of these do your target users currently rely on, and why do they fall short?"*
-
-**Q9 — Main Consequence**
-> *"What happens if this problem is left unsolved? Lost revenue, wasted time, missed opportunity — what specifically?"*
-
-**Q10 — What Works in Existing Solutions?**
-> Search G2 reviews, Product Hunt comments, and Reddit for praise of existing tools in this space.
-> Fetch and read at least 2 actual review/thread pages. Summarize what users genuinely like with fetched links.
-> Present findings first. Discuss. Then ask:
-> *"Do you agree with what users say works well? Anything here worth preserving in your approach?"*
-
-**Q11 — What Fails in Existing Solutions?**
-> Search G2, Capterra, Reddit, IndieHackers for complaints about the top competitors.
-> Fetch and read at least 2 complaint threads or review pages. Summarize the most common failure patterns.
-> Present findings first. Discuss. Then ask:
-> *"Do these failure patterns match what you've seen? Which one is your opening?"*
-
-**Q12 — Quantitative Proof**
-> Search for hard statistics: market size, growth rate, cost of the problem, frequency, number of affected users.
-> Fetch industry reports, academic papers, credible news sources. Provide fetched links for every stat.
-> If the user made market claims earlier — fact-check them here. Show what evidence actually says.
-> Discuss. Then ask:
-> *"Does this data match your understanding? Are there other signals proving this problem is real?"*
-
----
-
-## Phase 1 Output
-
-Only write `docs/research-[AppName].md` after **all 12 questions are answered** and the evidence ledger has at least 10 opened/read sources. If not — keep interviewing.
-
-```markdown
-# Research: [AppName]
-
-## The Core Problem
-[One-sentence summary of the pain]
-
-## Root Cause Analysis (5 Whys)
-
-> ⚠️ The root cause below is a **hypothesis** — not verified fact.
-> Validate before building by: [e.g., interviewing 5 target users / running a landing page test]
-
-| Why | Answer | Basis |
-|-----|--------|-------|
-| 1st | ... | [source or user statement] |
-| 2nd | ... | ... |
-| 3rd | ... | ... |
-| 4th | ... | ... |
-| 5th — Root Cause Hypothesis | ... | ... |
-
-## Job Story (Outcome Frame)
-> "When [situation the target user is in], I want to [what they're trying to do],
-> so I can [the outcome they actually care about]."
-
-## Target Audience
-[Specific persona. Include where they congregate online — with fetched source links.]
-
-## Existing Solutions
-| Tool | Strengths | Weaknesses | Pricing | Market Position |
-|------|-----------|------------|---------|-----------------|
-| ... | ... | ... | ... (fetched link) | ... |
-
-## Market Landscape
-- **Market size:** [stat] — Source: [fetched link]
-- **Growth trend:** [stat] — Source: [fetched link]
-- **Competitor pricing range:** [$X–$Y/mo]
-- **Similar successful projects:** [Name — outcome] — Source: [fetched link]
-- **Key failure patterns in existing solutions:** [from fetched reviews]
-
-## Main Consequence of Inaction
-[What happens if unsolved — with evidence]
-
-## Evidence
-- **What works in existing solutions:** ... (Source: [fetched link])
-- **What fails:** ... (Source: [fetched link])
-- **Quantitative proof:** ... (Source: [fetched link])
-
-## Deep Dive: Source Analysis
-[Every source fetched and read during Phase 1.]
-- **Source 1:** [URL] — **Key Insights:** [Dense synthesis of what was on the page]
-- **Source 2:** [URL] — **Key Insights:** ...
-- [Continue for all 10+ sources]
-
-## Verdict
-
-**[Choose one — do not force positive if evidence doesn't support it]**
-
-✅ **Worth pursuing because:** [1-2 sentences, specific, evidence-backed]
-
-❌ **Not worth building in this form because:** [Evidence. What's wrong.]
-   **Consider pivoting to:** [A sharper, more underserved angle the research revealed]
-
----
-
-## Appendix: Raw Research Log
-[All raw quotes, stats, excerpts from fetched sources — nothing lost]
-- [Quote/Stat] (Source: [fetched link])
-```
-
----
-
-## 🛑 Phase 1 Gate — Before Moving On
-
-**Fact-check pass:**
-Spawn a Fact-Checker subagent (or perform this yourself) to re-fetch every URL in the document.
-
-- ✅ `[VERIFIED: source matches claim]` — for passes
-- ❌ `[FACT CHECK FAILED: reason]` — for failures (dead link / content mismatch / outdated data)
-
-Fix all `❌` blocks before presenting. If a claim cannot be fixed, remove it from the document and log what was removed and why in the Appendix.
-
-**User approval:**
-> "Research is done and fact-checked.
-> **Verdict: [Worth pursuing / Not worth building — state which and why in one sentence].**
-> Approve to continue to Phase 2: Solution Validation."
-
----
-
-## ➡️ After Phase 1 Approval
-
-Read the Phase 2 file and begin immediately:
-> `Read: c:\Users\henry\Desktop\Agentic workflows\.agents\skills\vibe-psi\phases\p2-solution.md`
+Only reviewed, approved WORTH_INVESTIGATING permits SOLUTION_DISCOVERY. A user
+saying “continue anyway” does not change the evidence label or bypass the guard.
+An explicitly requested speculative build belongs to a separate builder task;
+record that PSI's gate was not passed. Desk research never proves paid demand.

@@ -1,0 +1,42 @@
+{
+  "base_commit": "9a28904fefb59cb2db8cff2c56ae7d4a25103cbe",
+  "upstream_provenance": "UNVERIFIED",
+  "files": [
+    {
+      "path": "references/vendor/vibe-agents.md",
+      "sha256": "e451503ff0a57136c44912be427426f3d487f0fad4b35a7f9446c54fb2d43fdd",
+      "preserved_from": "subskills/vibe-agents/SKILL.md",
+      "unchanged": true
+    },
+    {
+      "path": "references/vendor/vibe-build.md",
+      "sha256": "1d1f3f8009115bb8af9fc259b924894c0508a22d373326c460d439e353fcbc65",
+      "preserved_from": "subskills/vibe-build/SKILL.md",
+      "unchanged": true
+    },
+    {
+      "path": "references/vendor/vibe-prd.md",
+      "sha256": "f1f6fa0aca6113a5bf5aed0b8b4f7e64cfc7153f2ee734940ef67d9e2a21b941",
+      "preserved_from": "subskills/vibe-prd/SKILL.md",
+      "unchanged": true
+    },
+    {
+      "path": "references/vendor/vibe-research.md",
+      "sha256": "ccb04f513e544e4144457b430d7141554fdb34d0f6e43b84c4ef5823ce1ac8d3",
+      "preserved_from": "subskills/vibe-research/SKILL.md",
+      "unchanged": true
+    },
+    {
+      "path": "references/vendor/vibe-techdesign.md",
+      "sha256": "53a541690113e51093889a6cb532a638b7d1f73faa2d3a8ad38889ebef512702",
+      "preserved_from": "subskills/vibe-techdesign/SKILL.md",
+      "unchanged": true
+    },
+    {
+      "path": "references/vendor/vibe-workflow.md",
+      "sha256": "11b084f4148957088968ded9729ce68ed5b1f24e9454ec121d9414eff740040c",
+      "preserved_from": "subskills/vibe-workflow/SKILL.md",
+      "unchanged": true
+    }
+  ]
+}

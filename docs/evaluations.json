@@ -1,0 +1,137 @@
+{
+  "kind": "synthetic_live_intake_replays",
+  "limitations": [
+    "Single runs, not a reliability estimate",
+    "Web toolset deliberately absent",
+    "Original and intermediate revisions retained, including semantic failures",
+    "Final responses are actual model output; tool records read from session database"
+  ],
+  "runs": [
+    {
+      "case": "custom-browser",
+      "revision": 1,
+      "session_id": "20260908_084310_19c0a8",
+      "model": "gpt-5.6-luna",
+      "reported_tool_count": 13,
+      "prompt": "This is a synthetic, isolated live PSI behavior test. Do not edit the PSI source repository or any existing user project. Your explicitly selected product root is /home/ubuntu/psi-replays/custom-browser. Read /home/ubuntu/vibe-psi-astra/SKILL.md and load its necessary references/phases, then ACT as PSI on this user request, following the installed workflow. You may initialize only the supplied empty product root and write only there. Do not pretend user approvals, customer data or capability you do not have. Treat your final response as the next turn to the synthetic user; do not grade yourself or describe intended behavior. Request: I procrastinate and want a custom AI browser that blocks irrelevant pages but permits educational pages needed for work. Use grill-me and brainstorming too. What must our first MVP prove? Batch any independent questions. I do not know the cause. This is only a private idea; do not perform external actions.",
+      "final_response": "Selected product root: /home/ubuntu/psi-replays/custom-browser\n\nInitialized PSI state in FOUNDER_BRIEF and saved the founder brief at:\n\n/home/ubuntu/psi-replays/custom-browser/docs/brief-v1.json\n\nNo external actions were performed. No approval or customer evidence is recorded.\n\nBefore defining what the first MVP must prove, answer this batch:\n\n1. Describe one recent browsing episode:\n   - What were you trying to do?\n   - Which page or pages pulled you away?\n   - How long did the detour last?\n   - What happened to the intended work?\n\n2. How often does this happen, and how costly is it in time, deadlines, stress, or work quality?\n\n3. What counts as \u201ceducational\u201d for your work? Give 3\u20135 concrete examples. What pages must never be blocked?\n\n4. What have you already tried\u2014site blockers, separate browsers, timers, bookmarks, environment changes, or nothing\u2014and what happened?\n\n5. When you say \u201cirrelevant,\u201d do you mean unrelated to the current task, generally distracting, emotionally avoidant, or something else?\n\n6. Grill-me: what evidence would show that page blocking is not the real intervention point\u2014for example, the problem persists with distracting pages unavailable?\n\n7. Brainstorm without committing: list other possible intervention directions besides a custom AI browser. Examples could include changing task setup, access friction, accountability, scheduling, or workload\u2014not feature specifications.\n\nThe current problem map is: personal browsing procrastination is reported, but the incident pattern, frequency, consequence, workaround, and cause remain UNKNOWN. Until those are clearer, any proposed MVP proof claim would be speculation.",
+      "final_state": "FOUNDER_BRIEF",
+      "registered_artifacts": [],
+      "tools": [
+        "read_file",
+        "search_files",
+        "search_files",
+        "read_file",
+        "read_file",
+        "read_file",
+        "search_files",
+        "terminal",
+        "terminal",
+        "read_file",
+        "write_file",
+        "patch",
+        "write_file"
+      ],
+      "commands": [
+        "pwd && python3 --version && test -d /home/ubuntu/psi-replays/custom-browser && printf 'product_root_exists=yes\\n'",
+        "python3 '/home/ubuntu/vibe-psi-astra/scripts/psi_state.py' init --root '/home/ubuntu/psi-replays/custom-browser'"
+      ],
+      "files": [
+        "docs/psi-state.json",
+        "docs/brief-v1.json"
+      ]
+    },
+    {
+      "case": "personal-no-web",
+      "revision": 1,
+      "session_id": "20260908_084310_626b97",
+      "model": "gpt-5.6-luna",
+      "reported_tool_count": 9,
+      "prompt": "This is a synthetic, isolated live PSI behavior test. Do not edit the PSI source repository or any existing user project. Your explicitly selected product root is /home/ubuntu/psi-replays/personal-no-web. Read /home/ubuntu/vibe-psi-astra/SKILL.md and load its necessary references/phases, then ACT as PSI on this user request, following the installed workflow. You may initialize only the supplied empty product root and write only there. Do not pretend user approvals, customer data or capability you do not have. Treat your final response as the next turn to the synthetic user; do not grade yourself or describe intended behavior. Request: I want to stop losing time choosing meals for myself. I do not want a business, a website, or a subscription product. I do not know why it keeps happening. Batch questions and help me figure the problem out. You have no web access; do not invent research.",
+      "final_response": "Selected product root: /home/ubuntu/psi-replays/personal-no-web\n\nInitialized PSI state at FOUNDER_BRIEF. No existing artifacts or conflicts were found. Web research is unavailable, so we\u2019ll use your lived experience only and keep outside claims as UNKNOWN.\n\nPlease answer this batch about one recent meal-choice episode\u2014short answers or \u201cunknown\u201d are fine:\n\n1. When did it happen, and what was the situation? For example: time of day, where you were, whether you were hungry, and whether you were choosing only for yourself.\n2. What options were actually available?\n3. What did you do from the moment you started deciding until you ate\u2014or didn\u2019t eat?\n4. How long did the choice take, roughly?\n5. What made it feel difficult: too many options, low energy, uncertainty about what you wanted, health concerns, ingredients, planning, cost, cleanup, or something else?\n6. What was the consequence? Lost time, skipped or delayed food, stress, an unsatisfying meal, spending more, or another cost?\n7. What do you currently do to handle this\u2014repeat meals, order food, skip eating, ask someone, decide at the last minute, or something else?\n8. How often does this happen, and how severe is it on a typical occasion?\n9. What would \u201cstop losing time\u201d mean in observable terms?\n10. What do you suspect is causing it, if anything? Keep this separate from any solution idea.\n11. What have you already tried, and what happened?\n12. Are there constraints that matter\u2014dietary or medical restrictions, budget, ingredients, cooking access, schedule, or energy?\n\nI\u2019m not assuming this needs software or a product. The next step is to distinguish the observable problem from its possible causes.",
+      "final_state": "FOUNDER_BRIEF",
+      "registered_artifacts": [],
+      "tools": [
+        "read_file",
+        "search_files",
+        "search_files",
+        "read_file",
+        "read_file",
+        "read_file",
+        "terminal",
+        "terminal",
+        "read_file"
+      ],
+      "commands": [
+        "pwd && test -d /home/ubuntu/psi-replays/personal-no-web && printf 'root_exists=yes\\n' || printf 'root_exists=no\\n'; test -w /home/ubuntu/psi-replays/personal-no-web 2>/dev/null && printf 'root_writable=yes\\n' || printf 'root_writable=no\\n'",
+        "python3 '/home/ubuntu/vibe-psi-astra/scripts/psi_state.py' init --root '/home/ubuntu/psi-replays/personal-no-web'"
+      ],
+      "files": [
+        "docs/psi-state.json"
+      ]
+    },
+    {
+      "case": "custom-browser",
+      "revision": 2,
+      "session_id": "20260908_084630_4439a5",
+      "model": "gpt-5.6-luna",
+      "reported_tool_count": 13,
+      "prompt": "This is a synthetic, isolated live PSI behavior test. Do not edit the PSI source repository or any existing user project. Your explicitly selected product root is /home/ubuntu/psi-replays/custom-browser-v2. Read /home/ubuntu/vibe-psi-astra/SKILL.md and load its necessary references/phases, then ACT as PSI on this user request, following the installed workflow. You may initialize only the supplied empty product root and write only there. Do not pretend user approvals, customer data or capability you do not have. Treat your final response as the next turn to the synthetic user; do not grade yourself or describe intended behavior. Request: I procrastinate and want a custom AI browser that blocks irrelevant pages but permits educational pages needed for work. Use grill-me and brainstorming too. What must our first MVP prove? Batch any independent questions. I do not know the cause. This is only a private idea; do not perform external actions.",
+      "final_response": "Selected product root: /home/ubuntu/psi-replays/custom-browser-v2\n\nInitialized PSI state successfully. Current state: FOUNDER_BRIEF. Draft saved to:\n\n/home/ubuntu/psi-replays/custom-browser-v2/docs/brief-v1.json\n\nNo external actions or research were performed.\n\nI cannot responsibly define what the first MVP must prove yet. PSI requires one concrete incident before proposing mechanisms or MVP criteria. The browser is currently recorded only as a solution hypothesis, not as the confirmed answer.\n\nPlease answer this batch:\n\n1. Recent incident: What were you trying to accomplish, which page did you open instead, what happened next, and how long did the detour last?\n2. Work impact: What did you fail to complete, delay, or do worse because of it?\n3. Pattern: How often has this happened recently? An estimate is fine; do not invent precision.\n4. Current response: What do you currently do to prevent or recover from these detours?\n5. Educational exceptions: Give two or three examples of pages or page types that would be necessary for work, and two or three that would have been irrelevant in the incident.\n6. Decision boundary: Who or what should determine whether a page is \u201cneeded for work\u201d\u2014you, the task you entered, page content, or something else?\n7. Constraints: What data must remain private, and what false block would be unacceptable?\n\nBrainstorming lens: list the recurring situations in which this happens, without proposing features.\n\nGrill-me lens: what evidence would show that the problem is not irrelevant pages\u2014for example, unclear tasks, avoidance of difficult work, fatigue, notifications, or something else?\n\nAlso confirm whether the draft brief accurately captures your request. After that, PSI can investigate the problem and determine which claim a first experiment\u2014not yet a build\u2014would need to prove.",
+      "final_state": "FOUNDER_BRIEF",
+      "registered_artifacts": [],
+      "tools": [
+        "read_file",
+        "search_files",
+        "search_files",
+        "read_file",
+        "read_file",
+        "read_file",
+        "search_files",
+        "terminal",
+        "terminal",
+        "read_file",
+        "search_files",
+        "search_files",
+        "write_file"
+      ],
+      "commands": [
+        "python3 --version && test -d /home/ubuntu/psi-replays/custom-browser-v2 && printf 'root_exists\\n' && git -C /home/ubuntu/psi-replays/custom-browser-v2 rev-parse --show-toplevel 2>/dev/null || true",
+        "python3 /home/ubuntu/vibe-psi-astra/scripts/psi_state.py init --root /home/ubuntu/psi-replays/custom-browser-v2"
+      ],
+      "files": [
+        "docs/psi-state.json",
+        "docs/brief-v1.json"
+      ]
+    },
+    {
+      "case": "personal-no-web",
+      "revision": 2,
+      "session_id": "20260908_084630_974c88",
+      "model": "gpt-5.6-luna",
+      "reported_tool_count": 9,
+      "prompt": "This is a synthetic, isolated live PSI behavior test. Do not edit the PSI source repository or any existing user project. Your explicitly selected product root is /home/ubuntu/psi-replays/personal-no-web-v2. Read /home/ubuntu/vibe-psi-astra/SKILL.md and load its necessary references/phases, then ACT as PSI on this user request, following the installed workflow. You may initialize only the supplied empty product root and write only there. Do not pretend user approvals, customer data or capability you do not have. Treat your final response as the next turn to the synthetic user; do not grade yourself or describe intended behavior. Request: I want to stop losing time choosing meals for myself. I do not want a business, a website, or a subscription product. I do not know why it keeps happening. Batch questions and help me figure the problem out. You have no web access; do not invent research.",
+      "final_response": "Current stage: FOUNDER_BRIEF. I captured your goal and constraints; no external research was used.\n\nPlease answer these about the most recent time this happened:\n\n1. When was it, and what were you trying to decide\u2014one meal, the whole day, or something else?\n2. What options did you consider, and roughly how long did choosing take?\n3. What made the decision difficult in that moment? If you\u2019re unsure, describe what you noticed rather than guessing why.\n4. What did you eventually do: cook, order, repeat a familiar meal, delay eating, skip it, or something else?\n5. What had to be true for the choice to feel \u201cgood enough\u201d?\n6. How often does this happen, and when is it least difficult?\n7. What would count as improvement: choosing faster, thinking about it less, eating more consistently, reducing waste/cost, or something else?\n\nI\u2019ll use your answers to separate the observable problem from possible causes.",
+      "final_state": "FOUNDER_BRIEF",
+      "registered_artifacts": [],
+      "tools": [
+        "read_file",
+        "search_files",
+        "read_file",
+        "read_file",
+        "read_file",
+        "search_files",
+        "terminal",
+        "read_file",
+        "write_file"
+      ],
+      "commands": [
+        "python3 /home/ubuntu/vibe-psi-astra/scripts/psi_state.py init --root /home/ubuntu/psi-replays/personal-no-web-v2"
+      ],
+      "files": [
+        "docs/psi-state.json",
+        "docs/brief-v1.json"
+      ]
+    }
+  ]
+}
